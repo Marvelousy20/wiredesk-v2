@@ -21,7 +21,7 @@ export default function Home() {
         />
         {/* Second column content */}
       </div>
-      <div className="w-[19.05%] flex-shrink-0">
+      <div className="w-[19.05%] border-r border-divider-on-light flex-shrink-0">
         {/* Third column content */}
         {selectedItem === "Inbox" && <ChatList />}
         {/* {selectedItem === 'Inbox' && <InboxContent />}
@@ -29,26 +29,25 @@ export default function Home() {
         {selectedItem === 'Unassigned' && <UnassignedContent />} */}
       </div>
       <div
-        className={`transition-all bg-yellow duration-300 flex-grow ${
+        className={`transition-all border-r border-divider-on-light flex-grow ${
           isSecondColumnCollapsed ? "flex-grow" : "w-[41.4%]"
         } bg-gray-50`}
       >
         {/* Fourth column content */}
       </div>
       <div
-        className={`transition-all bg-violet-500 duration-300 ${
+        className={`transition-all border-r border-divider-on-light duration-300 ${
           isFifthColumnCollapsed ? "w-0 overflow-hidden" : "w-[17.46%]"
         } bg-gray-200`}
       >
         {/* Fifth column content */}
       </div>
       <div
-        className={`transition-all bg-blue-600 duration-300 ${
+        className={`transition-all  duration-300 ${
           isFifthColumnCollapsed ? "w-[20.63%]" : "w-[3.17%]"
         } bg-gray-300`}
       >
         {/* Sixth column content */}
-        Sixth hello hello
       </div>
     </div>
   );
