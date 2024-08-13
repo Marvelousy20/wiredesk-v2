@@ -27,7 +27,7 @@ export default function Sidebar() {
       </div>
 
       {/* Sidebar Icons */}
-      <div className="flex flex-col sidebar-height pb-1">
+      <div className="flex flex-col content-height pb-1">
         <SidebarIcon
           href="/"
           activeIcon={<HomeActiveIcon />}

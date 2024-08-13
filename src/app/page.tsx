@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import Navigation from "@/components/Main/Navigation";
+import ChatList from "@/components/Main/ChatList/Inbox";
 
 export default function Home() {
   const [isSecondColumnCollapsed, setIsSecondColumnCollapsed] = useState(false);
   const [isFifthColumnCollapsed, setIsFifthColumnCollapsed] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("Inbox")
+  const [selectedItem, setSelectedItem] = useState("Inbox");
 
   return (
     <div className="flex flex-grow">
@@ -14,11 +15,15 @@ export default function Home() {
           isSecondColumnCollapsed ? "w-0 overflow-hidden" : "w-[15.34%]"
         } bg-gray-100`}
       >
-        <Navigation selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
+        <Navigation
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+        />
         {/* Second column content */}
       </div>
-      <div className="w-[19.05%] bg-green-500 flex-shrink-0">
+      <div className="w-[19.05%] flex-shrink-0">
         {/* Third column content */}
+        {selectedItem === "Inbox" && <ChatList />}
         {/* {selectedItem === 'Inbox' && <InboxContent />}
         {selectedItem === 'Mentions' && <MentionsContent />}
         {selectedItem === 'Unassigned' && <UnassignedContent />} */}

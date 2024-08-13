@@ -5,11 +5,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Link from "next/link";
+import Image from "next/image";
 
 interface MenuItem {
   label: string;
-  href: string;
+  number?: number;
+  icon: any;
 }
 
 interface DropdownMenuProps {
@@ -21,19 +22,23 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, items }) => {
   return (
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value={label}>
-        <AccordionTrigger className="text-white hover:text-gray-300">
+        <AccordionTrigger className="text-[#BFBFBF] text-xs">
           {label}
         </AccordionTrigger>
         <AccordionContent>
           <ul className="space-y-2">
             {items.map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={item.href}
-                  className="text-gray-300 hover:text-white block py-1"
-                >
+              <li
+                key={index}
+                className="py-0.5 pl-2 flex items-center justify-between"
+              >
+                <div className="flex items-center text-xs gap-2">
+                  {item.icon && (
+                    <Image src={item.icon} alt="width" width={20} height={20} />
+                  )}
                   {item.label}
-                </Link>
+                </div>
+                <span className="text-xxs">{item.number}</span>
               </li>
             ))}
           </ul>

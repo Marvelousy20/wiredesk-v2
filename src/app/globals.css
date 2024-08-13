@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.sidebar-height {
+.content-height {
     height: calc(100vh - 110px);
   }
