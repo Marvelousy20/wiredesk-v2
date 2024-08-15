@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Main/Navigation";
 import ChatList from "@/components/Main/ChatList/Inbox";
+import ChatInfo from "@/components/Main/ChatInfo";
 
 export default function Home() {
   const [isSecondColumnCollapsed, setIsSecondColumnCollapsed] = useState(false);
@@ -34,6 +35,7 @@ export default function Home() {
         } bg-gray-50`}
       >
         {/* Fourth column content */}
+        <ChatInfo />
       </div>
       <div
         className={`transition-all border-r border-divider-on-light duration-300 ${

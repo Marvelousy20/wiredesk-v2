@@ -1,5 +1,7 @@
 import Image from "next/image";
 import StatusDropdown from "./StatusDropDown";
+import { ChatMessage } from "@/type";
+import ChatListCard from "./ChatListCard";
 
 export default function ChatList() {
   const statusOptions = [
@@ -24,6 +26,98 @@ export default function ChatList() {
     console.log("Selected sort:", value);
     // Handle the sort change here
   };
+
+  const messages: ChatMessage[] = [
+    {
+      id: "1",
+      sender: {
+        name: "Lucas Hernandes",
+        avatar: "/main/chatlist/lucas.svg",
+      },
+      message: "Received it, thank you.",
+      time: "Now",
+      isStarred: true,
+      isUnread: true,
+      platform: "instagram",
+    },
+
+    {
+      id: "2",
+      sender: {
+        name: "James Books",
+        avatar: "/main/chatlist/james.svg",
+      },
+      message: "I'm great, thanks for asking.",
+      time: "23m",
+      isStarred: true,
+      isUnread: false,
+      platform: "whatsapp",
+    },
+
+    {
+      id: "3",
+      sender: {
+        name: "Chuka Enyioma",
+        initials: "CE",
+      },
+      message: "Thank you, I have been able to.",
+      time: "45m",
+      isStarred: false,
+      isUnread: false,
+      platform: "whatsapp",
+    },
+
+    {
+      id: "4",
+      sender: {
+        name: "Susan Nguyen",
+        initials: "SN",
+      },
+      message: "Thank you, I have been able to.",
+      time: "45m",
+      isStarred: false,
+      isUnread: false,
+    },
+
+    {
+      id: "5",
+      sender: {
+        name: "John Boyega",
+        avatar: "/main/chatlist/john.svg",
+      },
+      message: "Okay I'll check in back in a..",
+      time: "2h",
+      isStarred: false,
+      isUnread: true,
+      platform: "gmail",
+    },
+
+    {
+      id: "6",
+      sender: {
+        name: "Damian Wayne",
+        initials: "DW",
+      },
+      message: "I made a complaint a few...",
+      time: "2h",
+      isStarred: false,
+      isUnread: false,
+      platform: "gmail",
+    },
+
+    {
+      id: "7",
+      sender: {
+        name: "Martha Judge",
+        initials: "MJ",
+      },
+      message: "Sent",
+      time: "3h",
+      isStarred: false,
+      isUnread: false,
+      platform: "gmail",
+    },
+  ];
 
   return (
     <div className="">
@@ -57,6 +151,13 @@ export default function ChatList() {
               onValueChange={handleSortChange}
             />
           </div>
+        </div>
+      </div>
+
+      {/* ChatList */}
+      <div className="px-3">
+        <div>
+          <ChatListCard messages={messages} />
         </div>
       </div>
     </div>

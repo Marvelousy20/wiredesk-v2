@@ -39,6 +39,7 @@ const config = {
         "inactive-dark": "#68666299",
         "divider-on-light": "#E9E9E9",
         "divider-on-dark": "#2B2B2B",
+        sbbt: "#37352FBF",
       },
       fontSize: {
         xxs: [
