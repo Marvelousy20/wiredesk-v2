@@ -3,6 +3,8 @@ import { useState } from "react";
 import Navigation from "@/components/Main/Navigation";
 import ChatList from "@/components/Main/ChatList/Inbox";
 import ChatInfo from "@/components/Main/ChatInfo";
+import Details from "@/components/Main/Details";
+import Tools from "@/components/Main/Toolss";
 
 export default function Home() {
   const [isSecondColumnCollapsed, setIsSecondColumnCollapsed] = useState(false);
@@ -20,10 +22,8 @@ export default function Home() {
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
         />
-        {/* Second column content */}
       </div>
       <div className="w-[19.05%] border-r border-divider-on-light flex-shrink-0">
-        {/* Third column content */}
         {selectedItem === "Inbox" && <ChatList />}
         {/* {selectedItem === 'Inbox' && <InboxContent />}
         {selectedItem === 'Mentions' && <MentionsContent />}
@@ -34,7 +34,6 @@ export default function Home() {
           isSecondColumnCollapsed ? "flex-grow" : "w-[41.4%]"
         } bg-gray-50`}
       >
-        {/* Fourth column content */}
         <ChatInfo />
       </div>
       <div
@@ -42,14 +41,14 @@ export default function Home() {
           isFifthColumnCollapsed ? "w-0 overflow-hidden" : "w-[17.46%]"
         } bg-gray-200`}
       >
-        {/* Fifth column content */}
+        <Details />
       </div>
       <div
         className={`transition-all  duration-300 ${
           isFifthColumnCollapsed ? "w-[20.63%]" : "w-[3.17%]"
         } bg-gray-300`}
       >
-        {/* Sixth column content */}
+        <Tools />
       </div>
     </div>
   );

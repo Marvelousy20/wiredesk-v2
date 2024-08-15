@@ -68,7 +68,7 @@ export default function Sidebar() {
           altText="Connections"
         />
         <SidebarIcon
-          href="/connections"
+          href="/connectivity"
           activeIcon={<ConnectionsActiveIcon />}
           inactiveIcon={<ConnectionsInactiveIcon />}
           altText="Contact"
