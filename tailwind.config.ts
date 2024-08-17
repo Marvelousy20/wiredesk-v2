@@ -40,6 +40,7 @@ const config = {
         "divider-on-light": "#E9E9E9",
         "divider-on-dark": "#2B2B2B",
         sbbt: "#37352FBF",
+        green: "#168907",
       },
       fontSize: {
         xxs: [
@@ -112,6 +113,7 @@ const config = {
       },
       boxShadow: {
         "trial-shadow": "0px 0px 0px 1px #FBF197 inset",
+        "connectivity-shadow": "4px 4px 20px 0px #00000012",
       },
       width: {
         "54": "54px",
