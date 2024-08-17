@@ -4,7 +4,7 @@ import ChatDetails from "./ChatDetails";
 
 export default function ChatInfo() {
   return (
-    <div>
+    <div className="">
       <div className="px-3 border-b border-divider-on-light">
         <div className="flex items-center justify-between h-[56px] px-2">
           <div className="flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function ChatInfo() {
           </div>
         </div>
       </div>
-      <div className="mt-2 px-5">
+      <div className="mt-2 px-5 content-height overflow-auto pb-10">
         {/* <p className="text-center text-xxs text-[#37352FBF] font-light mb-3">
           Today
         </p>

@@ -25,9 +25,6 @@ export default function Home() {
       </div>
       <div className="w-[19.05%] border-r border-divider-on-light flex-shrink-0">
         {selectedItem === "Inbox" && <ChatList />}
-        {/* {selectedItem === 'Inbox' && <InboxContent />}
-        {selectedItem === 'Mentions' && <MentionsContent />}
-        {selectedItem === 'Unassigned' && <UnassignedContent />} */}
       </div>
       <div
         className={`transition-all border-r border-divider-on-light flex-grow ${
