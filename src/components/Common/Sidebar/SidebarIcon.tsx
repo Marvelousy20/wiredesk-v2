@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ReactNode } from "react";
 
+
+
 interface SidebarIconProps {
   href: string;
   activeIcon: ReactNode;
@@ -25,12 +27,14 @@ const SidebarIcon: React.FC<SidebarIconProps> = ({
 
   return (
     <Link href={href}>
+
       <div
         className={`flex items-center justify-center p-1 rounded-[4px] mb-3  cursor-pointer ${
           isActive ? "bg-primary p-1.5" : "bg-transparent hover:bg-[#CCCCCC0D]"
         } hover:bg-gray-700`}
         aria-label={altText}
       >
+
         {isActive ? activeIcon : inactiveIcon}
       </div>
     </Link>
