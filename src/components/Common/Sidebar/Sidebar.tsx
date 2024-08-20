@@ -19,6 +19,7 @@ import {
   LivechatActiveIcon,
 } from "./icon";
 
+
 export default function Sidebar() {
   return (
     <div className="bg-darkest flex flex-col items-center justify-center">
@@ -27,7 +28,10 @@ export default function Sidebar() {
       </div>
 
       {/* Sidebar Icons */}
+
       <div className="flex flex-col content-height pb-1">
+        
+        
         <SidebarIcon
           href="/"
           activeIcon={<HomeActiveIcon />}
@@ -60,6 +64,7 @@ export default function Sidebar() {
         />
 
         <div className="flex-grow"></div>
+        
 
         <SidebarIcon
           href="/livechat"

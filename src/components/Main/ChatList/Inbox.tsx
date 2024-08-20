@@ -2,6 +2,12 @@ import Image from "next/image";
 import StatusDropdown from "./StatusDropDown";
 import { ChatMessage } from "@/type";
 import ChatListCard from "./ChatListCard";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default function ChatList() {
   const statusOptions = [
@@ -159,6 +165,10 @@ export default function ChatList() {
         <div>
           <ChatListCard messages={messages} />
         </div>
+      </div>
+      <div>
+      
+ 
       </div>
     </div>
   );
