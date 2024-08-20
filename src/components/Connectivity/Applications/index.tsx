@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Socials from "./Socials";
+import Enabled from "./Enabled"
 
 export default function Applications() {
   return (
@@ -19,17 +20,30 @@ export default function Applications() {
             >
               Socials
             </TabsTrigger>
-            <TabsTrigger value="financial">Financial</TabsTrigger>
-            <TabsTrigger value="meeting">Meeting</TabsTrigger>
-            <TabsTrigger value="management">Management</TabsTrigger>
-            <TabsTrigger value="plugins">Plugins</TabsTrigger>
-            <TabsTrigger value="enabled">Enabled</TabsTrigger>
+            <TabsTrigger value="financial"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
+            >Financial</TabsTrigger>
+            <TabsTrigger value="meeting"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
+            >Meeting</TabsTrigger>
+            <TabsTrigger value="management"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
+            >Management</TabsTrigger>
+            <TabsTrigger value="plugins"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
+            >Plugins</TabsTrigger>
+            <TabsTrigger value="enabled"
+            className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
+            >Enabled</TabsTrigger>
           </TabsList>
           <TabsContent value="all" className="">
             Make changes to your account here.
           </TabsContent>
           <TabsContent value="socials">
             <Socials />
+          </TabsContent>
+          <TabsContent value="enabled">
+            <Enabled />
           </TabsContent>
         </Tabs>
       </div>
