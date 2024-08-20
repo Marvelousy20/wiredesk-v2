@@ -38,6 +38,18 @@ const Enabled = () => {
 
        
         </div>
+        <div>
+        <Button className="bg-black rounded-[5px] px-2.5 py-[0.3125rem] text-white text-sm font-medium flex items-center gap-2 mt-3">
+                  <Image
+                    src="/page_info.svg"
+                    alt="page_info"
+                    width={20}
+                    height={20}
+                  />
+                  Manage
+                </Button>
+
+        </div>
       </div>
       }
 
