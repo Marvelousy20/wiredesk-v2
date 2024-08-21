@@ -27,3 +27,10 @@ export interface Message {
   transferredTo?: User;
   isNew?: boolean;
 }
+
+export interface ApplicationTypes {
+  icon: string;
+  name: string;
+  installed?: boolean;
+  description: string;
+}

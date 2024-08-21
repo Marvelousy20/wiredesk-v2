@@ -1,13 +1,10 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
+import InsatallAppModal from "../Modals/InstallAppModal";
+import { ApplicationTypes } from "@/type";
 
-interface Applications {
-  icon: string;
-  name: string;
-  installed?: boolean;
-  description: string;
-}
-
-const applications: Applications[] = [
+const applications: ApplicationTypes[] = [
   {
     icon: "/connectivity/whatsapp.svg",
     name: "Whatsapp",
@@ -59,13 +56,26 @@ const applications: Applications[] = [
 ];
 
 export default function Socials() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedApp, setSelectedApp] = useState<ApplicationTypes | null>(null);
+
+  const openModal = (app: ApplicationTypes) => {
+    setSelectedApp(app);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div className="w-full px-5 mt-5">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {applications.map((app, index) => (
           <div
             key={index}
-            className="px-4 py-5 bg-white border border-gray-60 shadow-connectivity-shadow rounded-[8px]"
+            className="px-4 py-5 bg-white border border-gray-60 shadow-connectivity-shadow rounded-[8px] cursor-pointer"
+            onClick={() => openModal(app)}
           >
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
@@ -89,6 +99,13 @@ export default function Socials() {
           </div>
         ))}
       </div>
+
+      <InsatallAppModal
+        closeModal={closeModal}
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        selectedApp={selectedApp}
+      />
     </div>
   );
 }
