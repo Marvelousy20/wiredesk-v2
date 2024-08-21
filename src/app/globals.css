@@ -5,3 +5,20 @@
 .content-height {
     height: calc(100vh - 110px);
   }
+
+  .custom-tooltip {
+    position: relative;
+    padding-left: 8px;
+    
+  }
+
+  .custom-tooltip::before {
+    content: '';
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #232529;
+  }
