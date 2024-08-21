@@ -236,7 +236,6 @@ const InsatallModal = ({
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        {/* <div className="fixed inset-0 bg-black/80" /> */}
         <DialogContent className="max-w-[75rem]">
           <div className="bg-[#2325290D] bg-opacity-5 flex py-[3.93rem] justify-between px-[3.125rem]">
             <div>

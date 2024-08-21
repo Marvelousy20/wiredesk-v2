@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
-const Enabled = () => {
+const Empty = () => {
   const data = undefined;
 
   return (
@@ -49,4 +49,4 @@ const Enabled = () => {
   );
 };
 
-export default Enabled;
+export default Empty;
