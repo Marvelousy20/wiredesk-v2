@@ -278,7 +278,7 @@ const InsatallModal = ({
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
-                    {/* <FaSpinner className="animate-spin" /> */}
+                    <FaSpinner className="animate-spin" />
                   </div>
                 ) : (
                   <span>Install now</span>
