@@ -3,14 +3,28 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 // import { MdOutlineOpenInNew } from "react-icons/md";
 // import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { ApplicationTypes } from "@/type";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  useGetInstagramUrl,
+  useGetDiscordUrl,
+  useLoginWithWhatsapp,
+  installSlack,
+  installTelegram,
+  loginWithDiscord,
+} from "./api";
 
 interface InstallAppProps {
   open: boolean;
@@ -28,189 +42,68 @@ const InsatallModal = ({
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [url, setUrl] = useState("");
   const [discordUrl, setDiscordUrl] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const getInstagramUrl = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/instagram/login/url`;
-    setIsLoading(true);
-    try {
-      const result = await axios.get(apiUrl);
-      const url = result.data?.data?.url;
-      setUrl(url);
-      setIsLoading(false);
-      console.log(url);
-    } catch (error) {
-      console.error(error);
-      setIsLoading(false);
-    }
-  };
+  const { data: instagramUrl, isLoading: isInstagramLoading } =
+    useGetInstagramUrl();
+  const { data: discordLoginUrl, isLoading: isDiscordLoading } =
+    useGetDiscordUrl();
 
-  const getDiscordUrl = async () => {
-    const getUrlApi = `${process.env.NEXT_PUBLIC_API_URL}/discord/login/url`;
-    const token = process.env.NEXT_PUBLIC_API_TOKEN;
-    setIsLoading(true);
-    try {
-      const result = await axios.get(getUrlApi, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const url = result.data?.data?.url;
-      setDiscordUrl(url);
-      setIsLoading(false);
-      console.log(url);
-    } catch (error) {
-      console.error(error);
-      setIsLoading(false);
-    }
-  };
-
-  const loginWithDiscord = async () => {
-    const loginApi = `${process.env.NEXT_PUBLIC_API_URL}/discord/login`;
-    const token = process.env.NEXT_PUBLIC_API_TOKEN;
-
-    const code = searchParams.get("code");
-    const guildId = searchParams.get("guild_id");
-    const permission = searchParams.get("permissions");
-
-    if (!code || !guildId || !permission) {
-      console.error("Missing required parameters");
-      return;
-    }
-
-    setIsLoading(true);
-
-    const postData = {
-      permissions: permission,
-      code: code,
-      guildId: guildId,
-    };
-
-    try {
-      const response = await axios.post(loginApi, postData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      // Handle successful login here
-      console.log(response?.data);
-
-      // const { data } = response;
-    } catch (error) {
-      console.error("Login failed:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const getWhatsappUrl = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/discord/login/url`;
-    setIsLoading(true);
-    try {
-      const result = await axios.get(apiUrl);
-      const url = result.data?.data?.url;
-      setIsLoading(false);
-      setUrl(url);
-      console.log(url);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const installTelegram = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/telegram/install`;
-    console.log(apiUrl);
-    setIsLoading(true);
-
-    const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-
-    const postData = {
-      botToken: botToken,
-    };
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-      },
-    };
-
-    try {
-      const response = await axios.post(apiUrl, postData, config);
-      console.log("Response from telegram", response?.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
-      setIsLoading(false);
-    }
-  };
-
-  const installSlack = async () => {
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/slack/install`;
-
-    const botToken = process.env.NEXT_PUBLIC_SLACK_BOT_TOKEN;
-
-    const postData = {
-      botToken: botToken,
-      secret: process.env.NEXT_PUBLIC_SLACK_SECRET,
-    };
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
-      },
-    };
-
-    try {
-      const result = await axios.post(apiUrl, postData, config);
-      setIsLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const isLoading = isInstagramLoading || isDiscordLoading;
 
   const handleAppConnection = () => {
     switch (selectedApp?.name) {
       case "Instagram":
-        getInstagramUrl();
+        setUrl(instagramUrl);
         break;
       case "Whatsapp":
-        getInstagramUrl();
+        // getInstagramUrl();
         break;
       case "Telegram":
         installTelegram();
         break;
       case "Discord":
-        getDiscordUrl();
+        setDiscordUrl(discordLoginUrl);
         break;
       case "Slack":
         installSlack();
         break;
       default:
         console.log("App not supported");
-        setIsLoading(false);
         return;
     }
   };
 
+  // useEffect(() => {
+  //   console.log("url", url);
+  //   window.open(url);
+  // }, [url]);
+
   useEffect(() => {
     if (url) {
-      const width = 600;
-      const height = 600;
-      const left = window.innerWidth / 2 - width / 2;
-      const top = window.innerHeight / 2 - height / 2;
+      // const modifiedUrl = url.replace(
+      //   "https://wiredesk.vercel.app",
+      //   "http://localhost:3000"
+      // );
+      // console.log("ModifiedUrl", modifiedUrl);
 
-      const newWindow = window.open(
-        url,
-        "_blank",
-        `width=${width}, height=${height}, top=${top}, left=${left}`
-      );
-      if (newWindow) newWindow.focus();
+      // const width = 600;
+      // const height = 600;
+      // const left = window.innerWidth / 2 - width / 2;
+      // const top = window.innerHeight / 2 - height / 2;
 
-      setUrl(""); // Reset URL to prevent re-opening
+      router.push(url);
+
+      // const newWindow = window.open(
+      //   modifiedUrl,
+      //   "_blank",
+      //   `width=${width}, height=${height}, top=${top}, left=${left}`
+      // );
+      // if (newWindow) newWindow.focus();
+
+      // setUrl("");
     }
   }, [url]);
 
@@ -227,9 +120,9 @@ const InsatallModal = ({
     const guildId = searchParams.get("guild_id");
     const permission = searchParams.get("permissions");
 
-    console.log(code, guildId, permission);
+    // console.log(code, guildId, permission);
     if (code && guildId && permission) {
-      loginWithDiscord();
+      loginWithDiscord(code, guildId, permission);
     }
   }, [searchParams]);
 
@@ -237,6 +130,9 @@ const InsatallModal = ({
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
         <DialogContent className="max-w-[75rem]">
+          <DialogHeader>
+            <DialogTitle></DialogTitle>
+          </DialogHeader>
           <div className="bg-[#2325290D] bg-opacity-5 flex py-[3.93rem] justify-between px-[3.125rem]">
             <div>
               <div className="flex gap-8">
@@ -328,7 +224,7 @@ const InsatallModal = ({
                 </Tabs>
               </div>
 
-              <div className="w-[30.4%] border border-[#EEEFF1] pt-9 px-12 h-[500px]">
+              <div className="w-[30.4%] border border-[#EEEFF1] pt-9 px-12 h-[400px]">
                 <div className="bg-[#2325290D] bg-opacity-5 py-12  px-8 space-y-4 rounded-[10px]">
                   <h1 className="text-black font-semibold text-xl">
                     Have a question?
