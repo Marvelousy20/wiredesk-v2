@@ -108,6 +108,7 @@ const InsatallModal = ({
   }, [url]);
 
   // Effect to handle Discord URL redirection
+  // shs
   useEffect(() => {
     if (discordUrl) {
       window.location.href = discordUrl;
