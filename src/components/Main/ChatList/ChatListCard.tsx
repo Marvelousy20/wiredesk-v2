@@ -35,7 +35,7 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
           <div className="flex-grow">
             <div className="flex items-center gap-x-1">
               <span
-                className={`text-sm ${
+                className={`text-sm min-w-0 whitespace-nowrap overflow-hidden text-ellipsis ${
                   msg.isUnread ? "font-semibold" : "font-medium"
                 }`}
               >
