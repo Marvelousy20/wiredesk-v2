@@ -187,7 +187,7 @@ export default function ChatDetails() {
           />
         </div>
 
-        <div className="flex-shrink-0 pb-2">
+        <div className="flex-shrink-0 pb-5">
           <div className="text-center flex flex-col items-center mt-2 px-3">
             <div className="items-center px-4 pt-2.5 pb-3 bg-white shadow-md rounded-[12px] border border-[#F1F1F1] mt-4 w-full">
               <div>
