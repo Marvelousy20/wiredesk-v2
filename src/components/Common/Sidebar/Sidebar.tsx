@@ -19,7 +19,6 @@ import {
   LivechatActiveIcon,
 } from "./icon";
 
-
 export default function Sidebar() {
   return (
     <div className="bg-darkest flex flex-col items-center justify-center">
@@ -30,13 +29,11 @@ export default function Sidebar() {
       {/* Sidebar Icons */}
 
       <div className="flex flex-col content-height pb-1">
-        
-        
         <SidebarIcon
           href="/"
           activeIcon={<HomeActiveIcon />}
           inactiveIcon={<HomeInactiveIcon />}
-          altText="Home"
+          altText="Help desk"
         />
         <SidebarIcon
           href="/automation"
@@ -48,7 +45,7 @@ export default function Sidebar() {
           href="/contact"
           activeIcon={<ContactActiveIcon />}
           inactiveIcon={<ContactInactiveIcon />}
-          altText="Analytics"
+          altText="Contact"
         />
         <SidebarIcon
           href="/campaign"
@@ -64,25 +61,24 @@ export default function Sidebar() {
         />
 
         <div className="flex-grow"></div>
-        
 
         <SidebarIcon
           href="/livechat"
           activeIcon={<LivechatActiveIcon />}
           inactiveIcon={<LiveChatInactiveIcon />}
-          altText="Connections"
+          altText="Live chat"
         />
         <SidebarIcon
           href="/connectivity"
           activeIcon={<ConnectionsActiveIcon />}
           inactiveIcon={<ConnectionsInactiveIcon />}
-          altText="Contact"
+          altText="Connectivity"
         />
         <SidebarIcon
           href="/settings"
           activeIcon={<SettingsActiveIcon />}
           inactiveIcon={<SettingsInactiveIcon />}
-          altText="Live Chat"
+          altText="Settings"
         />
 
         <Image src="/sidebar/avatar.svg" alt="avatar" width={32} height={32} />

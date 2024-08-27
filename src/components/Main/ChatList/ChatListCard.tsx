@@ -6,7 +6,10 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
   return (
     <ul className="space-y-2">
       {messages.map((msg) => (
-        <li key={msg.id} className="flex items-center p-2 rounded-[10px]">
+        <li
+          key={msg.id}
+          className="flex items-center p-2 rounded-[10px] hover:bg-[#F1F0F4] cursor-pointer"
+        >
           <div className="relative h-9 w-9 mr-1.5">
             {msg.sender.avatar ? (
               <Image
