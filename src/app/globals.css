@@ -3,22 +3,51 @@
 @tailwind utilities;
 
 .content-height {
-    height: calc(100vh - 110px);
-  }
+  height: calc(100vh - 110px);
+}
 
-  .custom-tooltip {
-    position: relative;
-    padding-left: 8px;
-    
-  }
+.custom-tooltip {
+  position: relative;
+  padding-left: 8px;
+  
+}
 
-  .custom-tooltip::before {
-    content: '';
-    position: absolute;
-    left: 0; 
-    top: 50%;
-    transform: translateY(-50%);
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid #232529;
-  }
+.custom-tooltip::before {
+  content: '';
+  position: absolute;
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #232529;
+}
+
+/* For Webkit-based browsers (Chrome, Safari) */
+/* .custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+} */
+
+/* .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #C2C7D0;
+  border-radius: 2px;
+  height: 52px;
+} */
+
+/* .custom-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+
+/* For Firefox */
+/* .custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #C2C7D0 transparent;
+} */
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit */
+}

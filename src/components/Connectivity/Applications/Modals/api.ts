@@ -18,6 +18,26 @@ export const useGetInstagramUrl = () => {
   });
 };
 
+//  Instagram mutation hook
+export const usePostInstagramData = () => {
+  return useMutation({
+    mutationKey: ["postInstagramData"],
+    mutationFn: async (code: string) => {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/instagram/login`,
+        { code: code },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          },
+        }
+      );
+      return response.data;
+    },
+  });
+};
+
+
 export const useGetDiscordUrl = () => {
   return useQuery({
     queryKey: ["getDiscordUrl"],

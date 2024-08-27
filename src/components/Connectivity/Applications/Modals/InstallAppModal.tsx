@@ -20,10 +20,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   useGetInstagramUrl,
   useGetDiscordUrl,
+  // useFacebookUrl,
   useLoginWithWhatsapp,
   installSlack,
   installTelegram,
   loginWithDiscord,
+  usePostInstagramData,
 } from "./api";
 
 interface InstallAppProps {
@@ -39,7 +41,6 @@ const InsatallModal = ({
   selectedApp,
   onOpenChange,
 }: InstallAppProps) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [url, setUrl] = useState("");
   const [discordUrl, setDiscordUrl] = useState("");
   // const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +60,7 @@ const InsatallModal = ({
         setUrl(instagramUrl);
         break;
       case "Whatsapp":
-        // getInstagramUrl();
+        setUrl(instagramUrl);
         break;
       case "Telegram":
         installTelegram();
@@ -70,42 +71,31 @@ const InsatallModal = ({
       case "Slack":
         installSlack();
         break;
+      case "Facebook":
+        // setUrl(facebookUrl);
+        break;
       default:
         console.log("App not supported");
         return;
     }
   };
 
-  // useEffect(() => {
-  //   console.log("url", url);
-  //   window.open(url);
-  // }, [url]);
+  // Instagram Post
+  const { mutate, data, error } = usePostInstagramData();
 
   useEffect(() => {
+    const code = searchParams.get("code");
+    console.log(code);
+
     if (url) {
-      // const modifiedUrl = url.replace(
-      //   "https://wiredesk.vercel.app",
-      //   "http://localhost:3000"
-      // );
-      // console.log("ModifiedUrl", modifiedUrl);
-
-      // const width = 600;
-      // const height = 600;
-      // const left = window.innerWidth / 2 - width / 2;
-      // const top = window.innerHeight / 2 - height / 2;
-
       router.push(url);
-
-      // const newWindow = window.open(
-      //   modifiedUrl,
-      //   "_blank",
-      //   `width=${width}, height=${height}, top=${top}, left=${left}`
-      // );
-      // if (newWindow) newWindow.focus();
-
-      // setUrl("");
     }
-  }, [url]);
+
+    if (code) {
+      console.log("request being made");
+      mutate(code);
+    }
+  }, [url, searchParams, mutate]);
 
   // Effect to handle Discord URL redirection
   // shs

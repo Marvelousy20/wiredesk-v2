@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navigation from "@/components/Main/Navigation";
 import ChatList from "@/components/Main/ChatList/Inbox";
 import ChatInfo from "@/components/Main/ChatInfo";
-import Details from "@/components/Main/Details";
+// import Details from "@/components/Main/Details";
 import Tools from "@/components/Main/Toolss";
 
 export default function Home() {
@@ -27,21 +27,15 @@ export default function Home() {
         {selectedItem === "Inbox" && <ChatList />}
       </div>
       <div
-        className={`transition-all border-r border-divider-on-light flex-grow ${
+        className={`transition-all relative border-r border-divider-on-light flex-grow h-screen ${
           isSecondColumnCollapsed ? "flex-grow" : "w-[41.4%]"
         } bg-gray-50`}
       >
         <ChatInfo />
       </div>
+
       <div
-        className={`transition-all border-r border-divider-on-light duration-300 ${
-          isFifthColumnCollapsed ? "w-0 overflow-hidden" : "w-[17.46%]"
-        } bg-gray-200`}
-      >
-        <Details />
-      </div>
-      <div
-        className={`transition-all  duration-300 ${
+        className={`transition-all duration-300 ${
           isFifthColumnCollapsed ? "w-[20.63%]" : "w-[3.17%]"
         } bg-gray-300`}
       >
