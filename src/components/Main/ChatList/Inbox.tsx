@@ -3,7 +3,6 @@ import StatusDropdown from "./StatusDropDown";
 import { ChatMessage } from "@/type";
 import ChatListCard from "./ChatListCard";
 
-
 export default function ChatList() {
   const statusOptions = [
     { value: "open", label: "Open" },
@@ -161,10 +160,7 @@ export default function ChatList() {
           <ChatListCard messages={messages} />
         </div>
       </div>
-      <div>
-      
- 
-      </div>
+      <div></div>
     </div>
   );
 }

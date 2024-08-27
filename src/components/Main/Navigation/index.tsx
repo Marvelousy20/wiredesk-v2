@@ -1,7 +1,25 @@
 import Image from "next/image";
 import DropdownMenu from "./dropdown";
+import { Dispatch, SetStateAction } from "react";
+
+type SelectedItemType = "Inbox" | "Search";
 
 const navItems = [
+  {
+    title: "Search",
+    icon: (
+      <Image src="/main/second/search.svg" alt="inbox" width={20} height={20} />
+    ),
+
+    activeIcon: (
+      <Image
+        src="/main/second/searchfilled.svg"
+        alt="inbox"
+        width={20}
+        height={20}
+      />
+    ),
+  },
   {
     title: "Inbox",
     unread: "254",
@@ -86,14 +104,14 @@ const channelItems = [
 
 interface NavigationProps {
   selectedItem: string;
-  setSelectedItem: (item: string) => void;
+  setSelectedItem: Dispatch<SetStateAction<SelectedItemType>>;
 }
 
 export default function Navigation({
   selectedItem,
   setSelectedItem,
 }: NavigationProps) {
-  const handleClick = (item: string) => {
+  const handleClick = (item: SelectedItemType) => {
     setSelectedItem(item);
   };
 
@@ -112,23 +130,6 @@ export default function Navigation({
 
       {/* Main section starts here */}
       <div className="flex flex-col content-height">
-        <div className="pl-3 mt-1">
-          <div className="px-2.5 flex items-center gap-1 h-[32px]">
-            <Image
-              src="/main/second/search.svg"
-              alt="seach"
-              width={20}
-              height={20}
-            />
-
-            <input
-              type="text"
-              placeholder="Search"
-              className="border-none outline-none bg-transparent text-white text-xs"
-            />
-          </div>
-        </div>
-
         {/* Navigation menu starts here */}
         <div className="px-3 mt-1.5">
           {navItems.map((item) => {
@@ -142,7 +143,7 @@ export default function Navigation({
                     ? "bg-primary-highlight text-primary-v2"
                     : "hover:bg-[#35353580]"
                 }`}
-                onClick={() => handleClick(item.title)}
+                onClick={() => handleClick(item.title as SelectedItemType)}
               >
                 <div className="mr-1">
                   {isActive ? item.activeIcon : item.icon}
@@ -178,7 +179,7 @@ export default function Navigation({
                 ? "bg-primary-highlight text-primary-v2"
                 : "hover:bg-[#35353580]"
             }`}
-            onClick={() => handleClick("Spam")}
+            onClick={() => handleClick("Spam" as SelectedItemType)}
           >
             <div className="flex items-center text-xs gap-2">
               <Image
@@ -198,7 +199,7 @@ export default function Navigation({
                 ? "bg-primary-highlight text-primary-v2"
                 : "hover:bg-[#35353580]"
             }`}
-            onClick={() => handleClick("Manage")}
+            onClick={() => handleClick("Manage" as SelectedItemType)}
           >
             <div className="flex items-center text-xs gap-2">
               <Image
