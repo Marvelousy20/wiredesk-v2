@@ -6,8 +6,9 @@ import "./globals.css";
 import Trial from "@/components/Main/Trial";
 import Sidebar from "@/components/Common/Sidebar/Sidebar";
 import {UserProvider} from '../context/index'
-import Analytics from "@/components/Analytics";
 
+
+import { QueryProvider } from "@/providers/queryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,19 +26,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
+     
         <body className={`${inter.className} w-full overflow-hidden`}>
+        <QueryProvider>
+        <UserProvider>
           <Trial />
-          <Analytics/>
+          
           <main className="flex">
             <nav className="w-[3.57%] min-w-[54px] bg-gray flex-shrink-0">
               <Sidebar />
+            
             </nav>
             {children}
           </main>
+        </UserProvider>
+        </QueryProvider>
         </body>
-      </UserProvider>
-     
+        
+      
     </html>
   );
 }

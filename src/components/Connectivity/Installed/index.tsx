@@ -1,5 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Empty from "../Applications/Empty";
+import Socials from "./Socials";
 
 export default function Installed() {
   return (
@@ -59,7 +60,7 @@ export default function Installed() {
             <Empty />
           </TabsContent>
           <TabsContent value="socials">
-            <Empty />
+            <Socials />
           </TabsContent>
           <TabsContent value="financial">
             <Empty />
