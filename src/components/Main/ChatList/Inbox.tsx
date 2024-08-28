@@ -144,7 +144,7 @@ export default function ChatList() {
             />
           </div>
 
-          <div className="!bg-red-500">
+          <div className="">
             <StatusDropdown
               options={sortOptions}
               defaultValue="newest"
