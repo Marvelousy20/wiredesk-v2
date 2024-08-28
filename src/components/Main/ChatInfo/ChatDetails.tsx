@@ -67,7 +67,7 @@ export default function ChatDetails() {
         >
           <div>
             <div className="flex justify-end mb-5 relative">
-              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-black max-w-[25rem]">
+              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem]">
                 Hi Books, my name is Sonata welcome to spurs. How may i be of
                 help today
               </h1>
@@ -85,7 +85,7 @@ export default function ChatDetails() {
 
           <div>
             <div className="flex justify-end mb-5 relative">
-              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-black max-w-[25rem]">
+              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem]">
                 Hi Books, my name is Sonata welcome to spurs. How may i be of
                 help today
               </h1>
@@ -120,7 +120,7 @@ export default function ChatDetails() {
               />
             </div>
             <div className="">
-              <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4  max-w-[26rem] text-black text-xxs leading-[20px]">
+              <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4  max-w-[26rem] text-darkest text-xxs leading-[20px]">
                 Hi Alex, I’m doing well, thank you. How about you?
               </h1>
             </div>
@@ -142,7 +142,7 @@ export default function ChatDetails() {
 
             <div className="mt-3">
               <div className="flex justify-end">
-                <h1 className=" bg-primary-light text-xxs leading-[20px] text-black rounded-[10px] p-4 max-w-[25rem]">
+                <h1 className=" bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem]">
                   I’m great, thanks for asking! I wanted to follow up on our
                   previous conversation about streamlining your company&apos;s
                   customer management processes. Have you had a chance to think
@@ -172,7 +172,7 @@ export default function ChatDetails() {
                 />
               </div>
               <div className="">
-                <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4 max-w-[26rem] text-black text-xxs leading-[20px]">
+                <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4 max-w-[26rem] text-darkest text-xxs leading-[20px]">
                   Hi Alex, I’m doing well, thank you. How about you?
                 </h1>
               </div>
