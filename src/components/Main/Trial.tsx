@@ -14,7 +14,7 @@ export default function Trial() {
             size={"trial"}
             className="text-grid bg-darkest text-sm font-medium"
           >
-            But wiredesk
+            Buy wiredesk
           </Button>
         </div>
         <div>
