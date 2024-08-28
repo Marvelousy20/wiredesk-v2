@@ -27,7 +27,11 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
 }) => {
   return (
     <Select defaultValue={defaultValue} onValueChange={onValueChange}>
-      <SelectTrigger className="border-none focus:ring-0 focus:ring-offset-0 px-0 font-medium text-black text-sm">
+      <SelectTrigger
+        className={`border-none focus:ring-0 focus:ring-offset-0 px-0 font-medium text-black text-sm ${
+          !defaultValue ? "text-primary" : "text-black"
+        }`}
+      >
         <SelectValue />
       </SelectTrigger>
       <SelectContent className="w-[118px] mt-0 text-xs p-1.5 rounded-lg">
@@ -39,7 +43,7 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
               option.value === defaultValue ? "text-primary" : ""
             }`}
           >
-            <div className="flex items-center justify-between w-full">
+            <div className="flex items-center justify-between w-full space-x-1">
               {option.count !== undefined && (
                 <span className="">{option.count}</span>
               )}

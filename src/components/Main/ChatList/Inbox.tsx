@@ -5,7 +5,7 @@ import ChatListCard from "./ChatListCard";
 
 export default function ChatList() {
   const statusOptions = [
-    { value: "open", label: "Open" },
+    { value: "open", label: "Open", count: 10 },
     { value: "closed", label: "Closed" },
     { value: "starred", label: "Starred" },
     { value: "snoozed", label: "Snoozed" },
@@ -134,7 +134,7 @@ export default function ChatList() {
         </div>
       </div>
 
-      <div className="mt-2 px-3">
+      <div className="mt-1.5 px-3">
         <div className="flex items-center justify-between px-2">
           <div className="bg-green-500">
             <StatusDropdown
