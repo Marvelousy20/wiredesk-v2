@@ -20,7 +20,7 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                 className="rounded-full"
               />
             ) : (
-              <div className="w-[31.95px] h-[31.95px] rounded-full bg-purple-500 flex items-center justify-center text-white">
+              <div className="w-[31.95px] h-[31.95px] rounded-full bg-purple-500 flex items-center justify-center text-white text-xs">
                 {msg.sender.initials}
               </div>
             )}
