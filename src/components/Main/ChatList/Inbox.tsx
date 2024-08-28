@@ -160,7 +160,7 @@ export default function ChatList() {
           <ChatListCard messages={messages} />
         </div>
       </div>
-      <div></div>
+      {/* <div></div> */}
     </div>
   );
 }

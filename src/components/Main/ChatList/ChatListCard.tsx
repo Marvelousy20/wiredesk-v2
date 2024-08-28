@@ -46,7 +46,11 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                   >
                     {msg.sender.name}
                   </span>
-                  <div className="h-[2.55px] w-[2.55px] bg-[#37352FBF]"></div>
+
+                  {/* <div className="h-[3px] w-[3px] rounded-full bg-[#37352FBF]"></div> */}
+                  <svg width="3" height="3" viewBox="0 0 3 3">
+                    <circle cx="1.5" cy="1.5" r="1.5" fill="#37352FBF" />
+                  </svg>
                   <span className="text-xxs text-[#37352FBF]">{msg.time}</span>
                 </div>
 
@@ -58,9 +62,9 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                   )}
                 </div>
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center mt-1.5">
                 <p
-                  className={`truncate text-xxs mt-1.5 ${
+                  className={`truncate text-xxs ${
                     msg.isUnread
                       ? "font-semibold"
                       : "font-medium text-[#37352FBF]"
@@ -84,7 +88,6 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col items-end justify-end"></div> */}
           </div>
         </li>
       ))}
