@@ -32,24 +32,30 @@ export default function Search() {
 
   return (
     <div className="w-full flex-grow">
-      <div className="flex items-center h-[56px] border-b border-divider-on-light px-3 w-full">
-        <div className="border-r-2 border-divider-on-light p-[6px] ">
-          <Image
-            src="/main/search/arrow-back.svg"
-            alt="arrow-back"
-            width={20}
-            height={20}
-          />
+      <div className="flex items-center h-[56px] border-b border-divider-on-light w-full px-5">
+        <div className="flex items-center gap-x-2">
+          <div className="">
+            <Image
+              src="/main/search/arrow-back.svg"
+              alt="arrow-back"
+              width={20}
+              height={20}
+            />
+          </div>
+
+          <div className="w-0.5 h-6 bg-[#F1F0F4] rounded-full"></div>
+
+          <div className="">
+            <Image
+              src="/main/search/search.svg"
+              alt="search"
+              width={20}
+              height={20}
+              className="text-md text-inactive font-semibold"
+            />
+          </div>
         </div>
 
-        <div className="text-md font-semibold pl-[11px]">
-          <Image
-            src="/main/search/search.svg"
-            alt="search"
-            width={20}
-            height={20}
-          />
-        </div>
         <input
           value={search}
           type="text"
@@ -57,7 +63,7 @@ export default function Search() {
           placeholder="Search"
           className="pl-2 text-md text-inactive border border-gray-300 rounded-lg  w-full border-none focus:outline-none "
         />
-        <div className="pr-[25px]" onClick={handleCancel}>
+        <div className="" onClick={handleCancel}>
           <Image
             src="/main/search/close.svg"
             alt="search"
@@ -66,16 +72,16 @@ export default function Search() {
           />
         </div>
       </div>
-      <div className="flex gap-x-[10px] ml-[20px] mt-[13px] ">
-        <div className="bg-gray-60 rounded-md p-[10px] ">
-          <p className="text-[#101010] text-xs font-medium">All</p>
+      <div className="flex items-center gap-x-2.5 mt-[13px] px-5">
+        <div className="bg-[#F1F0F4] rounded-md h-8 w-8 flex items-center justify-center">
+          <p className="text-darkest text-xs font-medium">All</p>
         </div>
-        <div className="border-r-2 border-gray-60 "></div>
-        <div className="flex gap-x-4 flex-1">
+        <div className="border-r-2 border-gray-60"></div>
+        <div className="flex items-center gap-x-4 flex-1">
           {searchTools.map((item) => (
             <div
               key={item.id}
-              className='flex gap-x-2 bg-gray-60 rounded-md p-[10px] cursor-pointer'
+              className="flex text-xs items-center gap-x-1 text-darkest bg-[#F1F0F4] h-8 pr-1.5 pl-2 rounded-md cursor-pointer"
               onClick={() => handleClick(item.id)}
             >
               <Image src={item.img} alt={item.name} width={14} height={14} />
@@ -88,18 +94,18 @@ export default function Search() {
               </p>
             </div>
           ))}
-          <div className="flex gap-x-2 rounded-md p-[10px]">
+          <div className="flex gap-x-2 rounded-md p-2.5">
             <Image
               src="/main/search/add.svg"
               alt="search"
               width={16}
               height={12}
             />
-            <p className="text-[#101010] text-xs font-medium">Add filter</p>
+            <p className="text-darkest text-xs font-medium">Add filter</p>
           </div>
         </div>
-        <div className="flex gap-x-2 rounded-md p-[10px] mr-6">
-          <p className="text-[#101010] text-xs font-medium">Relevance</p>
+        <div className="flex gap-x-2 rounded-md p-2.5">
+          <p className="text-darkest text-xs font-medium">Relevance</p>
           <Image
             src="/main/search/arrow_down.svg"
             alt="search"
@@ -108,19 +114,19 @@ export default function Search() {
           />
         </div>
       </div>
-      <div className="flex justify-center items-center h-full">
-        <div className="flex items-center flex-col gap-y-2 rounded-md p-[10px]">
+      <div className="flex justify-center items-center h-[80vh] max-w-[22.125rem] mx-auto">
+        <div className="flex items-center flex-col gap-y-2 rounded-md p-[10px] mt-2">
           <Image
             src="/main/search/big_search.svg"
             alt="search"
             width={64}
             height={64}
           />
-          <div className="w-[354px]">
-            <p className="text-dark_grey text-lg font-semibold text-center">
+          <div className="">
+            <p className="text-dark-grey text-lg font-semibold text-center">
               Search conversations and tickets
             </p>
-            <p className="text-inactive text-sm font-medium w-[354px] text-center">
+            <p className="text-inactive opacity-60 text-sm font-medium mt-2 max-w-[22.125rem] mx-auto text-center">
               Use relevant keywords, apply filters for precise results and save
               frequent searches for quick access.
             </p>

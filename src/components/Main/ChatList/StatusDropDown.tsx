@@ -39,7 +39,7 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
           <SelectItem
             key={option.value}
             value={option.value}
-            className={`focus:bg-grid pl-[0.875rem] font-medium ${
+            className={`focus:bg-grid rounded-[4px] pl-[0.875rem] font-medium ${
               option.value === defaultValue ? "text-primary" : ""
             }`}
           >
