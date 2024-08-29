@@ -138,7 +138,7 @@ export default function Navigation({
             return (
               <div
                 key={item.title}
-                className={`cursor-pointer py-1.5 px-2 flex items-center text-xs font-medium text-[#BFBFBF] rounded-[3px] ${
+                className={`cursor-pointer py-1.5 px-2 flex items-center text-xs font-medium text-[#BFBFBF] rounded-[3px] mb-1 ${
                   isActive
                     ? "bg-primary-highlight text-primary-v2"
                     : "hover:bg-[#35353580]"

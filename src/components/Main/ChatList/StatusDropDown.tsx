@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -25,11 +27,18 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
   defaultValue,
   onValueChange,
 }) => {
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
+
+  const handleValueChange = (value: string) => {
+    setSelectedValue(value);
+    onValueChange(value);
+  };
+
   return (
-    <Select defaultValue={defaultValue} onValueChange={onValueChange}>
+    <Select defaultValue={defaultValue} onValueChange={handleValueChange}>
       <SelectTrigger
         className={`border-none focus:ring-0 focus:ring-offset-0 px-0 font-medium text-black text-sm ${
-          !defaultValue ? "text-primary" : "text-black"
+          selectedValue ? "text-primary" : "text-black"
         }`}
       >
         <SelectValue />
@@ -39,8 +48,8 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
           <SelectItem
             key={option.value}
             value={option.value}
-            className={`focus:bg-grid rounded-[4px] pl-[0.875rem] font-medium ${
-              option.value === defaultValue ? "text-primary" : ""
+            className={`focus:bg-grid rounded-[4px] px-2 font-medium ${
+              option.value === selectedValue ? "text-primary" : ""
             }`}
           >
             <div className="flex items-center justify-between w-full space-x-1">

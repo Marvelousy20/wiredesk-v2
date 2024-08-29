@@ -84,7 +84,9 @@ export default function Search() {
               className="flex text-xs items-center gap-x-1 text-darkest bg-[#F1F0F4] h-8 pr-1.5 pl-2 rounded-md cursor-pointer"
               onClick={() => handleClick(item.id)}
             >
-              <Image src={item.img} alt={item.name} width={14} height={14} />
+              <div className="flex items-center justify-center h-5 w-5">
+                <Image src={item.img} alt={item.name} width={14} height={14} />
+              </div>
               <p
                 className={`text-[#101010] text-xs font-medium hover:text-primary  ${
                   openedItemId === item.id ? "text-primary" : "text-[#101010]"
