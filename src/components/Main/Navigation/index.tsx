@@ -161,9 +161,9 @@ export default function Navigation({
     },
   ];
 
-  const handleHorizontalDotClick = (item: Item, index: number) => {
+  const handleHorizontalDotClick = (label: string) => {
+    console.log('Horizontal dot clicked for section:', label);
     // Handle the click event, e.g., open a modal
-    console.log("Clicked on:", item.label, "at index:", index);
   };
 
   return (
