@@ -25,19 +25,20 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
               </div>
             )}
             {msg.platform && (
-              <div className="absolute bottom-1 right-1 w-[11.42px] h-[11.42px] bg-white rounded-full flex items-center justify-center">
+              <div className="absolute bottom-[4px] -right-1 w-[11.42px] h-[11.42px] bg-white rounded-full flex items-center justify-center">
                 <Image
                   src={`/main/chatlist/${msg.platform}.svg`}
                   alt={msg.platform}
                   width={11.42}
                   height={11.42}
+                  className="h-[11.42px] w-[11.42px]"
                 />
               </div>
             )}
           </div>
           <div className="flex items-center w-full">
             <div className="flex-grow">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between bg-red-500">
                 <div className="flex items-center gap-x-1">
                   <span
                     className={`text-sm min-w-0 whitespace-nowrap overflow-hidden text-ellipsis ${
@@ -51,7 +52,9 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                   <svg width="3" height="3" viewBox="0 0 3 3">
                     <circle cx="1.5" cy="1.5" r="1.5" fill="#37352FBF" />
                   </svg>
-                  <span className="text-xxs text-[#37352FBF]">{msg.time}</span>
+                  <span className="text-xxs text-[#37352FBF] m-0 p-0 align-middle  bg-blue-500">
+                    {msg.time}
+                  </span>
                 </div>
 
                 <div>
@@ -62,7 +65,7 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                   )}
                 </div>
               </div>
-              <div className="flex justify-between items-center mt-1.5">
+              <div className="flex justify-between items-center mt-1.5 bg-red-500">
                 <p
                   className={`truncate text-xxs ${
                     msg.isUnread

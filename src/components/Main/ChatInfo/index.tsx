@@ -35,6 +35,25 @@ export default function ChatInfo() {
                 height={20}
               />
             </div>
+
+            {/* Two images */}
+            <div className="flex items-center relative">
+              <Image
+                src="/main/chatinfo/lucas-small.svg"
+                alt="edit"
+                width={20}
+                height={20}
+                className="z-10 w-5 h-5"
+              />
+              <Image
+                src="/main/chatinfo/user-small.svg"
+                alt="edit"
+                width={20}
+                height={20}
+                className="top-0 -ml-2 w-5 h-5"
+              />
+            </div>
+
             <Button className="flex items-center gap-2 bg-gray-60 rounded-[4px] font-medium text-sm px-2 text-black h-[31px]">
               <Image
                 src="/main/chatinfo/clock.svg"

@@ -34,3 +34,14 @@ export interface ApplicationTypes {
   installed?: boolean;
   description: string;
 }
+
+export interface Item {
+  label: string;
+  icon?: string;
+  number?: number
+}
+
+export interface Section {
+  label: string;
+  items: Item[];
+}

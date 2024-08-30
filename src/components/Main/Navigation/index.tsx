@@ -1,6 +1,8 @@
 import Image from "next/image";
 import DropdownMenu from "./dropdown";
 import { Dispatch, SetStateAction } from "react";
+import CustomDropdown from "./CustomDropdownWithMenu";
+import { Item, Section } from "@/type";
 
 type SelectedItemType = "Inbox" | "Search";
 
@@ -83,24 +85,24 @@ const navItems = [
   },
 ];
 
-const teamItems = [
-  { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
-  { label: "Social", number: 43, icon: "/main/second/socials.png" },
-  { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
-  { label: "Technical", number: 26, icon: "/main/second/technical.png" },
-];
+// const teamItems = [
+//   { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
+//   { label: "Social", number: 43, icon: "/main/second/socials.png" },
+//   { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
+//   { label: "Technical", number: 26, icon: "/main/second/technical.png" },
+// ];
 
-const teammateItems = [
-  { label: "James Anderson", number: 12, icon: "/main/second/james.svg" },
-  { label: "Ashley Nyugen", number: 43, icon: "/main/second/ashley.svg" },
-];
+// const teammateItems = [
+//   { label: "James Anderson", number: 12, icon: "/main/second/james.svg" },
+//   { label: "Ashley Nyugen", number: 43, icon: "/main/second/ashley.svg" },
+// ];
 
-const channelItems = [
-  { label: "Whatsapp", number: 12, icon: "/main/second/WA.svg" },
-  { label: "Instagram", number: 43, icon: "/main/second/IG.svg" },
-  { label: "Gmail", number: 43, icon: "/main/second/Gmail.svg" },
-  { label: "Facebook", number: 43, icon: "/main/second/FB.svg" },
-];
+// const channelItems = [
+//   { label: "Whatsapp", number: 12, icon: "/main/second/WA.svg" },
+//   { label: "Instagram", number: 43, icon: "/main/second/IG.svg" },
+//   { label: "Gmail", number: 43, icon: "/main/second/Gmail.svg" },
+//   { label: "Facebook", number: 43, icon: "/main/second/FB.svg" },
+// ];
 
 interface NavigationProps {
   selectedItem: string;
@@ -113,6 +115,55 @@ export default function Navigation({
 }: NavigationProps) {
   const handleClick = (item: SelectedItemType) => {
     setSelectedItem(item);
+  };
+
+  const sections: Section[] = [
+    {
+      label: "WireDesk",
+      items: [
+        { label: "James Anderson", number: 12, icon: "/main/second/james.svg" },
+        { label: "Ashley Nyugen", number: 43, icon: "/main/second/ashley.svg" },
+      ],
+    },
+    {
+      label: "Teams",
+      items: [
+        { label: "James Anderson", number: 12, icon: "/main/second/james.svg" },
+        { label: "Ashley Nyugen", number: 43, icon: "/main/second/ashley.svg" },
+      ],
+    },
+    {
+      label: "Teammates",
+      items: [
+        { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
+        { label: "Social", number: 43, icon: "/main/second/socials.png" },
+        { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
+        { label: "Technical", number: 26, icon: "/main/second/technical.png" },
+      ],
+    },
+    {
+      label: "Tickets",
+      items: [
+        { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
+        { label: "Social", number: 43, icon: "/main/second/socials.png" },
+        { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
+        { label: "Technical", number: 26, icon: "/main/second/technical.png" },
+      ],
+    },
+    {
+      label: "Channels",
+      items: [
+        { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
+        { label: "Social", number: 43, icon: "/main/second/socials.png" },
+        { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
+        { label: "Technical", number: 26, icon: "/main/second/technical.png" },
+      ],
+    },
+  ];
+
+  const handleHorizontalDotClick = (item: Item, index: number) => {
+    // Handle the click event, e.g., open a modal
+    console.log("Clicked on:", item.label, "at index:", index);
   };
 
   return (
@@ -161,12 +212,16 @@ export default function Navigation({
         </div>
 
         {/* Socials */}
-        <div className="px-2 text-[#BFBFBF] mt-3">
-          <DropdownMenu label="WireDesk" items={teamItems} />
+        <div className="px-3 text-[#BFBFBF] mt-3">
+          {/* <DropdownMenu label="WireDesk" items={teamItems} />
           <DropdownMenu label="Teams" items={teamItems} />
           <DropdownMenu label="Teammates" items={teammateItems} />
           <DropdownMenu label="Tickets" items={teamItems} />
-          <DropdownMenu label="Channels" items={channelItems} />
+          <DropdownMenu label="Channels" items={channelItems} /> */}
+          <CustomDropdown
+            sections={sections}
+            onHorizontalDotClick={handleHorizontalDotClick}
+          />
         </div>
 
         <div className="flex-grow"></div>

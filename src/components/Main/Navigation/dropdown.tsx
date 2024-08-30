@@ -38,7 +38,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ label, items }) => {
                   )}
                   {item.label}
                 </div>
-                <span className="text-xxs">{item.number}</span>
+                {/* <span className="text-xxs">{item.number}</span> */}
               </li>
             ))}
           </ul>

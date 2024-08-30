@@ -37,8 +37,8 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
   return (
     <Select defaultValue={defaultValue} onValueChange={handleValueChange}>
       <SelectTrigger
-        className={`border-none focus:ring-0 focus:ring-offset-0 px-0 font-medium text-black text-sm ${
-          selectedValue ? "text-primary" : "text-black"
+        className={`border-none focus:ring-0 focus:ring-offset-0 px-0 font-medium text-black text-sm hover:text-primary ${
+          selectedValue ? "text-black" : "text-black"
         }`}
       >
         <SelectValue />
