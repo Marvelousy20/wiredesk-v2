@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 
-const TeammatesPopover = () => {
+const ChannelsPopover = () => {
   return (
     <div className="">
     <div className="flex items-center justify-between mb-2 px-4 gap-2">
@@ -76,8 +76,8 @@ const TeammatesPopover = () => {
         </div>
 
     </div>
- 
+  
   );
 };
 
-export default TeammatesPopover;
+export default ChannelsPopover;
