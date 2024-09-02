@@ -213,14 +213,9 @@ export default function Navigation({
 
         {/* Socials */}
         <div className="px-3 text-[#BFBFBF] mt-3">
-          {/* <DropdownMenu label="WireDesk" items={teamItems} />
-          <DropdownMenu label="Teams" items={teamItems} />
-          <DropdownMenu label="Teammates" items={teammateItems} />
-          <DropdownMenu label="Tickets" items={teamItems} />
-          <DropdownMenu label="Channels" items={channelItems} /> */}
           <CustomDropdown
             sections={sections}
-            onHorizontalDotClick={handleHorizontalDotClick}
+            // onHorizontalDotClick={handleHorizontalDotClick}
           />
         </div>
 

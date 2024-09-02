@@ -8,27 +8,42 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import { MoreHorizontal, MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { Item, Section } from "@/type";
+import { ChevronRight } from "lucide-react";
+import { renderDialogContent } from "./renderDialogContent";
 
 interface CustomAccordionItemProps {
   label: string;
   items: Item[];
-  onHorizontalDotClick: (label: string) => void;
+  //   onHorizontalDotClick: (label: string) => void;
 }
 
 interface CustomDropdownProps {
   sections: Section[];
-  onHorizontalDotClick: (label: string) => void;
+  //   onHorizontalDotClick: (label: string) => void;
 }
 
 const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
   label,
   items,
-  onHorizontalDotClick,
+  //   onHorizontalDotClick,
 }) => {
-  //   const [isHovered, setIsHovered] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return (
     <AccordionItem value={label}>
@@ -36,13 +51,28 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
         <MoreVertical className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity absolute -left-[3.5px]" />
         <span className="">{label}</span>
         <div className="flex-grow"></div>
-        <MoreHorizontal
-          className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity"
-          onClick={(e) => {
-            e.stopPropagation();
-            onHorizontalDotClick(label);
-          }}
-        />
+        <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+          <PopoverTrigger asChild>
+            <MoreHorizontal
+              className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                // onHorizontalDotClick(label);
+                console.log("clicked", label);
+              }}
+            />
+          </PopoverTrigger>
+
+          <PopoverContent
+            className="sm:max-w-[264px] p-0 py-2"
+            align="start"
+            // sideOffset={20}
+          >
+            {renderDialogContent(label)}
+          </PopoverContent>
+        </Popover>
+
+        <ChevronRight className="h-4 w-4 shrink-0 transition-transform duration-200 [&[data-state=open]>svg]:rotate-90" />
       </AccordionTrigger>
       <AccordionContent>
         <ul className="space-y-2">
@@ -56,7 +86,6 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
                   <Image src={item.icon} alt="width" width={20} height={20} />
                 )}
                 {item.label}
-                {/* <span className="text-xxs">{item.number}</span> */}
               </div>
             </li>
           ))}
@@ -68,8 +97,9 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
 
 const CustomDropdown: React.FC<CustomDropdownProps> = ({
   sections,
-  onHorizontalDotClick,
+  //   onHorizontalDotClick,
 }) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   return (
     <Accordion type="single" collapsible className="w-full">
       {sections.map((section, index) => (
@@ -77,7 +107,7 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
           key={index}
           label={section.label}
           items={section.items}
-          onHorizontalDotClick={onHorizontalDotClick}
+          //   onHorizontalDotClick={onHorizontalDotClick}
         />
       ))}
     </Accordion>
