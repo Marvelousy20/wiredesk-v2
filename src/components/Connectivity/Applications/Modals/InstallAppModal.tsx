@@ -241,7 +241,7 @@ const InsatallModal = ({
           </div>
         </DialogContent>
       </Dialog>
-      {isLoading && (
+      {/* {isLoading && (
         <div
           style={{
             position: "fixed",
@@ -258,7 +258,7 @@ const InsatallModal = ({
         >
           <FaSpinner className="animate-spin" size={50} />
         </div>
-      )}
+      )} */}
     </>
   );
 };
