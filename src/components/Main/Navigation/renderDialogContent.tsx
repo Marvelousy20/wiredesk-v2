@@ -26,7 +26,7 @@ export const renderDialogContent = (label: string) => {
           <TeammatesPopover />
         </>
       );
-    case "Ticketss":
+    case "Tickets":
       return (
         <>
           <TicketsPopover />
@@ -38,7 +38,7 @@ export const renderDialogContent = (label: string) => {
           <ChannelsPopover />
         </>
       );
-    // Add cases for other sections (Tickets, Channels) as needed
+   
     default:
       return <p>No options available for this section.</p>;
   }

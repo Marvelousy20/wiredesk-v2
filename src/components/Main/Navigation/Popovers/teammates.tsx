@@ -24,7 +24,7 @@ const TeammatesPopover = () => {
       <div className="flex items-center justify-between h-8">
         <div className="flex items-center gap-1.5">
           <Image
-            src="/main/second/james-avatar.svg"
+            src="/main/chatinfo/james-avatar.svg"
             alt="edit"
             width={20}
             height={20}
@@ -45,7 +45,7 @@ const TeammatesPopover = () => {
       <div className="flex items-center justify-between h-8">
         <div className="flex items-center gap-1.5">
           <Image
-            src="/main/second/james.svg"
+            src="/main/chatinfo/james-avatar.svg"
             alt="edit"
             width={20}
             height={20}
