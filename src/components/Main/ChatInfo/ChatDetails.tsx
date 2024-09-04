@@ -4,6 +4,12 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ChatDetails() {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -67,28 +73,47 @@ export default function ChatDetails() {
         >
           <div>
             <div className="flex justify-end mb-5 relative">
-              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem]">
-                Hi Books, my name is Sonata welcome to spurs. How may i be of
-                help today
-              </h1>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem] text-start">
+                      Hi Books, my name is Sonata welcome to spurs. How may i be
+                      of help today
+                    </h1>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex"
+                    side="top"
+                  >
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/more_horiz.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
 
-              <div className="flex items-end ml-[0.43rem]">
-                <Image
-                  src="/main/chatinfo/james-avatar.svg"
-                  alt="avatar"
-                  width={19}
-                  height={19}
-                />
-              </div>
-            </div>
-          </div>
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/forward.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
 
-          <div>
-            <div className="flex justify-end mb-5 relative">
-              <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem]">
-                Hi Books, my name is Sonata welcome to spurs. How may i be of
-                help today
-              </h1>
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/copy.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
 
               <div className="flex items-end ml-[0.43rem]">
                 <Image
@@ -120,9 +145,44 @@ export default function ChatDetails() {
               />
             </div>
             <div className="">
-              <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4  max-w-[26rem] text-darkest text-xxs leading-[20px]">
-                Hi Alex, I’m doing well, thank you. How about you?
-              </h1>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4  max-w-[26rem] text-darkest text-xxs leading-[20px]">
+                      Hi Alex, I&apos;m doing well, thank you. How about you?
+                    </h1>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex items-center"
+                    side="top"
+                  >
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/more_horiz.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/forward.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <div className="w-6 h-6 flex items-center justify-center p-1">
+                      <Image
+                        src="/main/chatinfo/copy.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
 
@@ -142,12 +202,48 @@ export default function ChatDetails() {
 
             <div className="mt-3">
               <div className="flex justify-end">
-                <h1 className=" bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem]">
-                  I’m great, thanks for asking! I wanted to follow up on our
-                  previous conversation about streamlining your company&apos;s
-                  customer management processes. Have you had a chance to think
-                  about implementing our CRM software?
-                </h1>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <h1 className=" bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem] text-start">
+                        I’m great, thanks for asking! I wanted to follow up on
+                        our previous conversation about streamlining your
+                        company&apos;s customer management processes. Have you
+                        had a chance to think about implementing our CRM
+                        software?
+                      </h1>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex items-center"
+                      side="top"
+                    >
+                      <div className="w-6 h-6 flex items-center justify-center p-1">
+                        <Image
+                          src="/main/chatinfo/more_horiz.svg"
+                          alt="avatar"
+                          width={16}
+                          height={16}
+                        />
+                      </div>
+                      <div className="w-6 h-6 flex items-center justify-center p-1">
+                        <Image
+                          src="/main/chatinfo/forward.svg"
+                          alt="avatar"
+                          width={16}
+                          height={16}
+                        />
+                      </div>
+                      <div className="w-6 h-6 flex items-center justify-center p-1">
+                        <Image
+                          src="/main/chatinfo/copy.svg"
+                          alt="avatar"
+                          width={16}
+                          height={16}
+                        />
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
 
                 <div className="flex items-end ml-2">
                   <Image
