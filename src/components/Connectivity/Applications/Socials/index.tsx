@@ -25,7 +25,7 @@ const applications: ApplicationTypes[] = [
   },
   {
     icon: "/connectivity/slack.svg",
-    name: "slack",
+    name: "Slack",
     installed: false,
     description: "Connect your Slack as a channel in Wiredesk",
   },
@@ -49,9 +49,9 @@ const applications: ApplicationTypes[] = [
   },
   {
     icon: "/connectivity/messager.svg",
-    name: "Message",
+    name: "Messenger",
     installed: false,
-    description: "Connect your Faceboob messager as a channel in Wiredesk",
+    description: "Connect your Facebook messenger as a channel in Wiredesk",
   },
 ];
 

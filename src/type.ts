@@ -10,6 +10,7 @@ export interface ChatMessage {
   isStarred: boolean;
   isUnread: boolean;
   platform?: "instagram" | "whatsapp" | "teams" | "gmail";
+  alert?: boolean;
 }
 
 export interface User {

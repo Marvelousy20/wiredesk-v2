@@ -71,7 +71,7 @@ const InsatallModal = ({
       case "Slack":
         installSlack();
         break;
-      case "Facebook":
+      case "Messenger":
         // setUrl(facebookUrl);
         break;
       default:

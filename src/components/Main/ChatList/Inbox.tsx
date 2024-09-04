@@ -113,9 +113,10 @@ export default function ChatList() {
       },
       message: "Sent",
       time: "3h",
-      isStarred: false,
-      isUnread: false,
+      isStarred: true,
+      isUnread: true,
       platform: "gmail",
+      alert: true,
     },
   ];
 
