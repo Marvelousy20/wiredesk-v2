@@ -8,7 +8,9 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
       {messages.map((msg) => (
         <li
           key={msg.id}
-          className="flex items-center p-2 rounded-[10px] hover:bg-[#F1F0F4] cursor-pointer"
+          className={`flex items-center p-2 rounded-[10px] hover:bg-[#F1F0F4] cursor-pointer ${
+            msg.sender.name === "James Books" ? "bg-[#EBE7F8]" : ""
+          }`}
         >
           <div className="relative h-9 w-9 mr-1.5">
             {msg.sender.avatar ? (
@@ -48,7 +50,6 @@ const ChatListCard: React.FC<{ messages: ChatMessage[] }> = ({ messages }) => {
                     {msg.sender.name}
                   </span>
 
-                  {/* <div className="h-[3px] w-[3px] rounded-full bg-[#37352FBF]"></div> */}
                   <svg width="3" height="3" viewBox="0 0 3 3">
                     <circle cx="1.5" cy="1.5" r="1.5" fill="#37352FBF" />
                   </svg>
