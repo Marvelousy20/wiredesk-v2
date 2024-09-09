@@ -85,25 +85,6 @@ const navItems = [
   },
 ];
 
-// const teamItems = [
-//   { label: "Mentions", number: 12, icon: "/main/second/mentions.png" },
-//   { label: "Social", number: 43, icon: "/main/second/socials.png" },
-//   { label: "Tier/Support", number: 17, icon: "/main/second/support.png" },
-//   { label: "Technical", number: 26, icon: "/main/second/technical.png" },
-// ];
-
-// const teammateItems = [
-//   { label: "James Anderson", number: 12, icon: "/main/second/james.svg" },
-//   { label: "Ashley Nyugen", number: 43, icon: "/main/second/ashley.svg" },
-// ];
-
-// const channelItems = [
-//   { label: "Whatsapp", number: 12, icon: "/main/second/WA.svg" },
-//   { label: "Instagram", number: 43, icon: "/main/second/IG.svg" },
-//   { label: "Gmail", number: 43, icon: "/main/second/Gmail.svg" },
-//   { label: "Facebook", number: 43, icon: "/main/second/FB.svg" },
-// ];
-
 interface NavigationProps {
   selectedItem: string;
   setSelectedItem: Dispatch<SetStateAction<SelectedItemType>>;
@@ -162,7 +143,7 @@ export default function Navigation({
   ];
 
   const handleHorizontalDotClick = (label: string) => {
-    console.log('Horizontal dot clicked for section:', label);
+    console.log("Horizontal dot clicked for section:", label);
     // Handle the click event, e.g., open a modal
   };
 
@@ -172,10 +153,11 @@ export default function Navigation({
         <div className="text-md font-semibold text-white ">WireDesk</div>
 
         <Image
-          src="/main/second/collapse-left.svg"
+          src="/main/second/alert.svg"
           alt="collapse-left"
           width={20}
           height={20}
+          className="cursor-pointer"
         />
       </div>
 

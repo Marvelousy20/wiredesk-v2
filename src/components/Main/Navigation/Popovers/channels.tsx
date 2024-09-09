@@ -1,9 +1,8 @@
 import Image from "next/image";
 
-
 const ChannelsPopover = () => {
   return (
-<div className="">
+    <div className="">
       <div className="flex items-center justify-between mb-2 px-4 gap-2">
         <Image
           src="/main/second/searchp.svg"
@@ -91,9 +90,7 @@ const ChannelsPopover = () => {
               width={20}
               height={20}
             />
-            <span className="text-xxs font-medium text-black">
-              Facebook
-            </span>
+            <span className="text-xxs font-medium text-black">Facebook</span>
           </div>
           <div className="flex items-center gap-1">
             <span className="text-xxs font-medium text-black">12</span>
@@ -126,11 +123,8 @@ const ChannelsPopover = () => {
             />
           </div>
         </div>
-
-     
       </div>
     </div>
-  
   );
 };
 

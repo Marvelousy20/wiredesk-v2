@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
@@ -11,9 +11,22 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import MoreHorizPopover from "./popovers/horiz";
+
 export default function ChatDetails() {
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollbarRef = useRef<HTMLDivElement>(null);
+
+  const [showPopover, setShowPopover] = useState(false);
+  const [showMoreActions, setShowMoreActions] = useState(false);
+
+  const [showCusPopover, setShowCusPopover] = useState(false);
+  const [showCusMoreActions, setShowCusMoreActions] = useState(false);
 
   useEffect(() => {
     const content = contentRef.current;
@@ -62,7 +75,7 @@ export default function ChatDetails() {
     };
   }, []);
   return (
-    <div className="text-[0.75rem] mt-4 w-full h-full">
+    <div className="text-[0.75rem] mt-4 w-full h-full relative">
       <h3 className="text-center text-xxs text-[#37352FBF]">Today</h3>
 
       <div className="mt-3 flex flex-col h-full relative px-5">
@@ -71,57 +84,168 @@ export default function ChatDetails() {
           className="flex-grow overflow-y-auto h-full pr-2 hide-scrollbar"
           id="chatContent"
         >
-          <div>
-            <div className="flex justify-end mb-5 relative">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <h1 className="bg-primary-light rounded-[10px] p-4 text-xxs leading-[20px] text-darkest max-w-[25rem] text-start">
-                      Hi Books, my name is Sonata welcome to spurs. How may i be
-                      of help today
-                    </h1>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex"
-                    side="top"
-                  >
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/more_horiz.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
+          {/* first message */}
+          <div className="flex py-5">
+            <div className="flex items-end mr-[0.43rem]">
+              <Image
+                src="/main/chatinfo/lucas.svg"
+                alt="avatar"
+                width={19}
+                height={19}
+              />
+            </div>
+            <div className="">
+              <div
+                className="relative z-10"
+                onMouseEnter={() => setShowCusPopover(true)}
+                onMouseLeave={() => {
+                  setShowCusPopover(false);
+                  setShowCusMoreActions(false);
+                }}
+              >
+                <div className="group relative">
+                  <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4 max-w-[26rem] text-darkest text-xxs leading-[20px]">
+                    Hi, I was charged twice for the same order. Can you help me
+                    with this?
+                  </h1>
+                </div>
 
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/forward.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
+                {showCusPopover && (
+                  <div className="absolute right-7 -top-7 !text-black border border-[#D9D9D9] p-1 rounded-[4px] flex bg-[#F1F0F4] z-30">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/more_horiz.svg"
+                            alt="More options"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        className="sm:max-w-[154px] p-0 py-2"
+                        side="top"
+                      >
+                        <MoreHorizPopover isSender={true} />
+                      </PopoverContent>
+                    </Popover>
 
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/copy.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/forward.svg"
+                            alt="Forward"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+                      {/* <PopoverContent>Hello</PopoverContent> */}
+                    </Popover>
 
-              <div className="flex items-end ml-[0.43rem]">
-                <Image
-                  src="/main/chatinfo/james-avatar.svg"
-                  alt="avatar"
-                  width={19}
-                  height={19}
-                />
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/copy.svg"
+                            alt="Copy"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+
+                      {/* <PopoverContent>
+                        <div>Copy options</div>
+                      </PopoverContent> */}
+                    </Popover>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Second message */}
+          <div className="py-5">
+            <div className="relative z-10">
+              <div
+                onMouseEnter={() => setShowPopover(true)}
+                onMouseLeave={() => {
+                  setShowPopover(false);
+                  setShowMoreActions(false);
+                }}
+              >
+                <div className="flex justify-end">
+                  <h1 className="bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem] text-start z-20">
+                    Hello! I’m sorry to hear about the double charge. Could you
+                    please provide your order number so I can look into it?
+                  </h1>
+
+                  <div className="flex items-end ml-2">
+                    <Image
+                      src="/main/chatinfo/james-avatar.svg"
+                      alt="avatar"
+                      width={19}
+                      height={19}
+                    />
+                  </div>
+                </div>
+                {showPopover && (
+                  <div className="absolute right-7 -top-7 !text-black border border-[#D9D9D9] p-1 rounded-[4px] flex bg-[#F1F0F4] z-30">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/more_horiz.svg"
+                            alt="More options"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        className="sm:max-w-[154px] p-0 py-2"
+                        side="top"
+                        // align="end"
+                      >
+                        <MoreHorizPopover isSender={true} />
+                      </PopoverContent>
+                    </Popover>
+
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/forward.svg"
+                            alt="Forward"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+                      {/* <PopoverContent>Hello</PopoverContent> */}
+                    </Popover>
+
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                          <Image
+                            src="/main/chatinfo/copy.svg"
+                            alt="Copy"
+                            width={16}
+                            height={16}
+                          />
+                        </div>
+                      </PopoverTrigger>
+
+                      {/* <PopoverContent>
+                        <div>Copy options</div>
+                      </PopoverContent> */}
+                    </Popover>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -135,128 +259,7 @@ export default function ChatDetails() {
             <div className="line bg-[#EAECF0] h-[1px]"></div>
           </div>
 
-          <div className="flex py-5">
-            <div className="flex items-end mr-[0.43rem]">
-              <Image
-                src="/main/chatinfo/lucas.svg"
-                alt="avatar"
-                width={19}
-                height={19}
-              />
-            </div>
-            <div className="">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4  max-w-[26rem] text-darkest text-xxs leading-[20px]">
-                      Hi Alex, I&apos;m doing well, thank you. How about you?
-                    </h1>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex items-center"
-                    side="top"
-                  >
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/more_horiz.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/forward.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
-                    <div className="w-6 h-6 flex items-center justify-center p-1">
-                      <Image
-                        src="/main/chatinfo/copy.svg"
-                        alt="avatar"
-                        width={16}
-                        height={16}
-                      />
-                    </div>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          </div>
-
-          <div className="mt-3">
-            <div className="flex justify-center items-center gap-2">
-              <h4 className="text-sbbt text-xxs text-center">
-                This chat has been transferred to Mary Ancelotti
-              </h4>
-
-              <Image
-                src="/main/chatinfo/lucas.svg"
-                alt="avatar"
-                width={20}
-                height={20}
-              />
-            </div>
-
-            <div className="mt-3">
-              <div className="flex justify-end">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <h1 className=" bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem] text-start">
-                        I’m great, thanks for asking! I wanted to follow up on
-                        our previous conversation about streamlining your
-                        company&apos;s customer management processes. Have you
-                        had a chance to think about implementing our CRM
-                        software?
-                      </h1>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      className="!text-black border border-[#D9D9D9] p-1 rounded-[4px] flex items-center"
-                      side="top"
-                    >
-                      <div className="w-6 h-6 flex items-center justify-center p-1">
-                        <Image
-                          src="/main/chatinfo/more_horiz.svg"
-                          alt="avatar"
-                          width={16}
-                          height={16}
-                        />
-                      </div>
-                      <div className="w-6 h-6 flex items-center justify-center p-1">
-                        <Image
-                          src="/main/chatinfo/forward.svg"
-                          alt="avatar"
-                          width={16}
-                          height={16}
-                        />
-                      </div>
-                      <div className="w-6 h-6 flex items-center justify-center p-1">
-                        <Image
-                          src="/main/chatinfo/copy.svg"
-                          alt="avatar"
-                          width={16}
-                          height={16}
-                        />
-                      </div>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-
-                <div className="flex items-end ml-2">
-                  <Image
-                    src="/main/chatinfo/james-avatar.svg"
-                    alt="avatar"
-                    width={19}
-                    height={19}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
+          {/* Third message */}
           <div className="mt-3">
             <div className="flex py-5">
               <div className="flex items-end mr-[0.43rem]">
@@ -271,6 +274,91 @@ export default function ChatDetails() {
                 <h1 className="bg-gray-60 bg-opacity-10 rounded-[10px] p-4 max-w-[26rem] text-darkest text-xxs leading-[20px]">
                   Hi Alex, I’m doing well, thank you. How about you?
                 </h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="my-3.5">
+            {/* Transferred */}
+
+            <div className="flex justify-center items-center gap-2">
+              <h4 className="text-sbbt text-xxs text-center">
+                This chat has been transferred to Mary Ancelotti
+              </h4>
+
+              <Image
+                src="/main/chatinfo/lucas.svg"
+                alt="avatar"
+                width={20}
+                height={20}
+              />
+            </div>
+
+            {/* Last Message */}
+            <div className="py-5 relative">
+              <div
+                onMouseEnter={() => setShowPopover(true)}
+                onMouseLeave={() => {
+                  setShowPopover(false);
+                  setShowMoreActions(false);
+                }}
+              >
+                <div className="flex justify-end">
+                  <h1 className="bg-primary-light text-xxs leading-[20px] text-darkest rounded-[10px] p-4 max-w-[25rem] text-start">
+                    I’m great, thanks for asking! I wanted to follow up on our
+                    previous conversation about streamlining your company&apos;s
+                    customer management processes. Have you had a chance to
+                    think about implementing our CRM software?
+                  </h1>
+
+                  <div className="flex items-end ml-2">
+                    <Image
+                      src="/main/chatinfo/james-avatar.svg"
+                      alt="avatar"
+                      width={19}
+                      height={19}
+                    />
+                  </div>
+                </div>
+                {showPopover && (
+                  <div className="absolute right-7 -top-2 !text-black border border-[#D9D9D9] p-1 rounded-[4px] flex bg-[#F1F0F4]">
+                    <div
+                      className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer"
+                      onClick={() => {
+                        setShowMoreActions(!showMoreActions);
+                      }}
+                    >
+                      <Image
+                        src="/main/chatinfo/more_horiz.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                      <Image
+                        src="/main/chatinfo/forward.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                    <div className="w-6 h-6 flex items-center justify-center p-1 cursor-pointer">
+                      <Image
+                        src="/main/chatinfo/copy.svg"
+                        alt="avatar"
+                        width={16}
+                        height={16}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* {showMoreActions && (
+                  <div className="absolute right-0 w-full -top-[200px] z-50">
+                    <MoreHorizPopover isSender={true} />
+                  </div>
+                )} */}
               </div>
             </div>
           </div>
