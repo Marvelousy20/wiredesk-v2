@@ -81,15 +81,23 @@ export default function Search() {
           {searchTools.map((item) => (
             <div
               key={item.id}
-              className="flex text-xs items-center gap-x-1 text-darkest bg-[#F1F0F4] h-8 pr-1.5 pl-2 rounded-md cursor-pointer"
+              className="flex text-xs items-center gap-x-1 text-darkest bg-[#F1F0F4] h-8 pr-1.5 pl-2 rounded-md cursor-pointer group"
               onClick={() => handleClick(item.id)}
             >
               <div className="flex items-center justify-center h-5 w-5">
-                <Image src={item.img} alt={item.name} width={14} height={14} />
+                <Image
+                  src={item.img}
+                  alt={item.name}
+                  width={14}
+                  height={14}
+                  className="transition-all duration-200 group-hover:[filter:invert(27%)_sepia(51%)_saturate(1920%)_hue-rotate(244deg)_brightness(96%)_contrast(95%)]"
+                />
               </div>
               <p
-                className={`text-[#101010] text-xs font-medium hover:text-primary  ${
-                  openedItemId === item.id ? "text-primary" : "text-[#101010]"
+                className={`font-medium transition-colors duration-200 ${
+                  openedItemId === item.id
+                    ? "text-primary"
+                    : "text-[#101010] group-hover:text-primary"
                 }`}
               >
                 {openedItemId === item.id ? `${item.name}: cisco` : item.name}
