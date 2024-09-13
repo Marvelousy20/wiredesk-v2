@@ -115,6 +115,7 @@ const config = {
         "trial-shadow": "0px 0px 0px 1px #FBF197 inset",
         "connectivity-shadow": "4px 4px 20px 0px #00000012",
         filter: "0px 0px 36px 0px #0000001F",
+        "filter-inset": "inset 0px 0px 0px 1px #FBF197", 
       },
       width: {
         "54": "54px",

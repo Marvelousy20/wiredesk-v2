@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import EditDialog from "./TicketDialogContent/edit";
+import CreateDialog from "./TicketDialogContent/create";
 
 const TicketsPopover = () => {
   return (
@@ -19,8 +22,8 @@ const TicketsPopover = () => {
 
       <div className="h-[1px] bg-[#F1F0F4]" />
 
-      <div className="px-4 mt-2 space-y-1">
-        <div className="flex items-center justify-between h-8">
+      <div className="px-1.5 mt-2 space-y-1">
+        <div className="flex items-center justify-between h-8 hover:bg-grid px-2 cursor-pointer">
           <div className="flex items-center gap-1.5">
             <Image
               src="/main/second/mentions.png"
@@ -37,13 +40,23 @@ const TicketsPopover = () => {
               12
             </span>
             <div className="w-6 h-6 flex items-center justify-center">
-              <Image
-                src="/main/second/popovers/edit.svg"
-                alt="edit"
-                width={16}
-                height={16}
-                className=""
-              />
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div>
+                    <Image
+                      src="/main/second/popovers/edit.svg"
+                      alt="edit"
+                      width={16}
+                      height={16}
+                      className=""
+                    />
+                  </div>
+                </DialogTrigger>
+
+                <DialogContent className="max-w-[25rem] p-0">
+                  <EditDialog />
+                </DialogContent>
+              </Dialog>
             </div>
 
             <div className="w-6 h-6 flex items-center justify-center">
@@ -57,7 +70,7 @@ const TicketsPopover = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between h-8">
+        <div className="flex items-center justify-between h-8 hover:bg-grid px-2 cursor-pointer">
           <div className="flex items-center gap-1.5">
             <Image
               src="/main/second/check.png"
@@ -90,7 +103,7 @@ const TicketsPopover = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between h-8">
+        <div className="flex items-center justify-between h-8 hover:bg-grid px-2 cursor-pointer">
           <div className="flex items-center gap-1.5">
             <Image
               src="/main/second/sos.png"
@@ -125,7 +138,7 @@ const TicketsPopover = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between h-8">
+        <div className="flex items-center justify-between h-8 hover:bg-grid px-2 cursor-pointer">
           <div className="flex items-center gap-1.5">
             <Image
               src="/main/second/bug.png"
@@ -159,7 +172,7 @@ const TicketsPopover = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between h-8">
+        <div className="flex items-center justify-between h-8 hover:bg-grid px-2 cursor-pointer">
           <div className="flex items-center gap-1.5">
             <Image
               src="/main/second/unpin.svg"
@@ -173,18 +186,25 @@ const TicketsPopover = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between h-8 border-t border-divider-on-light ">
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/main/second/create.png"
-              alt="edit"
-              width={16}
-              height={16}
-            />
-            <span className="text-xxs font-medium text-black">
-              Create new ticket
-            </span>
-          </div>
+        <div className="flex items-center justify-between h-8 border-t border-divider-on-light hover:bg-grid px-2 cursor-pointer">
+          <Dialog>
+            <DialogTrigger>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/main/second/create.png"
+                  alt="edit"
+                  width={16}
+                  height={16}
+                />
+                <span className="text-xxs font-medium text-black">
+                  Create new ticket
+                </span>
+              </div>
+            </DialogTrigger>
+            <DialogContent className="max-w-[25rem] p-0">
+              <CreateDialog />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>

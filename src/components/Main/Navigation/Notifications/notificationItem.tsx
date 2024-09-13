@@ -58,14 +58,14 @@ export default function NotificationItem() {
   return (
     <div className="px-3.5">
       <div>
-        <h3 className="font-medium text-black">Yesterday</h3>
+        <h3 className="font-medium text-inactive">Yesterday</h3>
 
         <div>
           <ChatListCard messages={messages} />
         </div>
       </div>
       <div>
-        <h3 className="font-medium text-black">Last 7 days</h3>
+        <h3 className="font-medium text-inactive my-1">Last 7 days</h3>
 
         <div>
           <ChatListCard messages={messages} />

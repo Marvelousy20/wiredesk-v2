@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import {
   Accordion,
@@ -37,7 +37,13 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
   items,
   //   onHorizontalDotClick,
 }) => {
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  // const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  const handlePopoverClick = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+  };
 
   return (
     <AccordionItem value={label}>
@@ -45,22 +51,18 @@ const CustomAccordionItem: React.FC<CustomAccordionItemProps> = ({
         <MoreVertical className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity absolute -left-[3.5px]" />
         <span className="">{label}</span>
         <div className="flex-grow"></div>
-        <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+        <Popover>
           <PopoverTrigger asChild>
             <MoreHorizontal
               className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-              onClick={(e) => {
-                e.stopPropagation();
-                // onHorizontalDotClick(label);
-                console.log("clicked", label);
-              }}
+              onClick={handlePopoverClick}
             />
           </PopoverTrigger>
 
           <PopoverContent
             className="sm:max-w-[264px] p-0 py-2"
             align="start"
-            // sideOffset={20}
+            onClick={(e) => e.stopPropagation()}
           >
             {renderDialogContent(label)}
           </PopoverContent>
