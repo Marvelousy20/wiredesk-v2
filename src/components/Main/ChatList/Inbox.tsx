@@ -1,5 +1,5 @@
 import Image from "next/image";
-import StatusDropdown from "./StatusDropDown";
+import StatusDropdown from "../../Common/FilterDropDown";
 import { ChatMessage } from "@/type";
 import ChatListCard from "./ChatListCard";
 
@@ -142,6 +142,7 @@ export default function ChatList() {
               options={statusOptions}
               defaultValue="open"
               onValueChange={handleStatusChange}
+              contentWidth="118px"
             />
           </div>
 
@@ -150,6 +151,7 @@ export default function ChatList() {
               options={sortOptions}
               defaultValue="newest"
               onValueChange={handleSortChange}
+              contentWidth="118px"
             />
           </div>
         </div>

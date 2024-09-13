@@ -20,12 +20,14 @@ interface StatusDropdownProps {
   options: StatusOption[];
   defaultValue: string;
   onValueChange: (value: string) => void;
+  contentWidth?: string;
 }
 
-const StatusDropdown: React.FC<StatusDropdownProps> = ({
+const FilterDropdown: React.FC<StatusDropdownProps> = ({
   options,
   defaultValue,
   onValueChange,
+  contentWidth,
 }) => {
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
@@ -43,12 +45,15 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent className="w-[118px] mt-0 text-xs p-1.5 rounded-lg">
+      <SelectContent
+        className="mt-0 text-xs p-1.5 rounded-lg"
+        style={{ width: contentWidth || "auto" }}
+      >
         {options.map((option) => (
           <SelectItem
             key={option.value}
             value={option.value}
-            className={`focus:bg-grid rounded-[4px] px-2 font-medium ${
+            className={`focus:bg-grid rounded-[4px] px-2 py-2 font-medium ${
               option.value === selectedValue ? "text-primary" : ""
             }`}
           >
@@ -65,4 +70,4 @@ const StatusDropdown: React.FC<StatusDropdownProps> = ({
   );
 };
 
-export default StatusDropdown;
+export default FilterDropdown;

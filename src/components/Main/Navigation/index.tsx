@@ -1,8 +1,13 @@
 import Image from "next/image";
-import DropdownMenu from "./dropdown";
 import { Dispatch, SetStateAction } from "react";
 import CustomDropdown from "./CustomDropdownWithMenu";
-import { Item, Section } from "@/type";
+import { Section } from "@/type";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import Notifications from "./Notifications";
 
 type SelectedItemType = "Inbox" | "Search";
 
@@ -152,13 +157,20 @@ export default function Navigation({
       <div className="flex justify-between items-center h-[56px] border-b border-black px-3">
         <div className="text-md font-semibold text-white ">WireDesk</div>
 
-        <Image
-          src="/main/second/alert.svg"
-          alt="collapse-left"
-          width={20}
-          height={20}
-          className="cursor-pointer"
-        />
+        <Popover>
+          <PopoverTrigger>
+            <Image
+              src="/main/second/alert.svg"
+              alt="collapse-left"
+              width={20}
+              height={20}
+              className="cursor-pointer"
+            />
+          </PopoverTrigger>
+          <PopoverContent className="max-w-[18rem] mx-auto p-0" align="start">
+            <Notifications />
+          </PopoverContent>
+        </Popover>
       </div>
 
       {/* Main section starts here */}
@@ -184,7 +196,6 @@ export default function Navigation({
                 <span>{item.title}</span>
                 {item.unread && (
                   <span className="ml-auto text-xxs font-medium">
-                    {" "}
                     {item.unread}
                   </span>
                 )}
